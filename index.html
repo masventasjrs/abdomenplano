@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocolo 21 Días — Abdomen Definido | 15 min en Casa</title>
+<meta name="description" content="21 entrenamientos guiados de 15 minutos para abdomen definido en casa. Sin aparatos. Con calendario y progresión.">
+<link rel="icon" type="image/png" href="https://i.postimg.cc/JnQXh5bM/impulsodigitaljr-b-icon-180x180.png">
+<link rel="apple-touch-icon" href="https://i.postimg.cc/JnQXh5bM/impulsodigitaljr-b-icon-180x180.png">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070807; --bg2:#0E100E; --card:#131613; --card2:#1A1E1A; --line:rgba(255,255,255,.09);
+    --text:#F4F6F0; --muted:#9AA39A; --accent:#C8FF2E; --accent2:#FF5A1F; --accentText:#0A0C07;
+    --shadow:0 20px 60px rgba(0,0,0,.45);
+  }
+  [data-theme="light"]{
+    --bg:#F4F5EF; --bg2:#FFFFFF; --card:#FFFFFF; --card2:#F0F2E8; --line:rgba(0,0,0,.09);
+    --text:#12150F; --muted:#5E665E; --accent:#7AC70C; --accent2:#FF5A1F; --accentText:#FFFFFF;
+    --shadow:0 20px 50px rgba(0,0,0,.10);
+  }
+  *{font-family:'Inter',sans-serif}
+  h1,h2,h3,.font-display{font-family:'Sora',sans-serif}
+  body{background:var(--bg);color:var(--text);transition:background .4s,color .4s;overflow-x:hidden}
+  .card{background:var(--card);border:1px solid var(--line)}
+  .card2{background:var(--card2);border:1px solid var(--line)}
+  .muted{color:var(--muted)}
+  .accent{background:var(--accent);color:var(--accentText)}
+  .accent-text{color:var(--accent)}
+  .accent2{color:var(--accent2)}
+  .glass{background:color-mix(in srgb, var(--card) 82%, transparent);backdrop-filter:blur(16px);border:1px solid var(--line)}
+  .btn-accent{background:var(--accent);color:var(--accentText);transition:.25s}
+  .btn-accent:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,255,46,.35)}
+  .day-card{transition:.3s;cursor:pointer}
+  .day-card:hover{transform:translateY(-5px);border-color:var(--accent)}
+  .day-card.active{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset}
+  .day-card.done{opacity:.92}
+  .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.8,.2,1)}
+  .reveal.visible{opacity:1;transform:none}
+  .marquee{animation:marquee 22s linear infinite}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .float{animation:float 5s ease-in-out infinite}
+  @keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(200,255,46,.5)}70%{box-shadow:0 0 0 14px rgba(200,255,46,0)}100%{box-shadow:0 0 0 0 rgba(200,255,46,0)}}
+  .pulse{animation:pulseRing 2s infinite}
+  ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:#3a403a;border-radius:99px}
+  .no-scrollbar::-webkit-scrollbar{display:none}
+  .timer-ring{transform:rotate(-90deg)}
+  .confetti{position:fixed;width:10px;height:14px;top:-20px;z-index:9999;pointer-events:none;border-radius:2px}
+  #exImage{transition:opacity .35s ease, transform .35s ease}
+  #exImage.fading{opacity:0;transform:scale(1.04)}
+  .thumb{transition:.25s}
+  .thumb:hover{transform:scale(1.06)}
+  input,select{outline:none}
+  .phase-tab.active{background:var(--accent);color:var(--accentText);border-color:transparent}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="fixed top-0 left-0 right-0 z-50 glass">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[68px] flex items-center justify-between gap-3">
+    <a href="#" class="flex items-center gap-3 shrink-0">
+      <img src="https://i.postimg.cc/JnQXh5bM/impulsodigitaljr-b-icon-180x180.png" alt="Impulso Digital JR" class="w-10 h-10 rounded-xl object-cover shadow-lg">
+      <div class="leading-none">
+        <p class="font-display font-800 font-extrabold tracking-tight text-[15px] sm:text-base">IMPULSO <span class="accent-text">DIGITAL JR</span></p>
+        <p class="text-[10px] tracking-[0.22em] muted font-semibold mt-0.5">PROTOCOLO 21 DÍAS</p>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7 text-sm font-medium muted">
+      <a href="#calendario" class="hover:text-[var(--text)]">Calendario</a>
+      <a href="#entrenamiento" class="hover:text-[var(--text)]">Entrenamiento</a>
+      <a href="#fases" class="hover:text-[var(--text)]">Las 3 Fases</a>
+      <a href="#beneficios" class="hover:text-[var(--text)]">Beneficios</a>
+    </nav>
+    <div class="flex items-center gap-2 sm:gap-3">
+      <div class="hidden sm:flex items-center gap-2 card rounded-full px-3 py-1.5 text-xs font-bold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="navProgress">0/21 días</span>
+      </div>
+      <!-- BOTÓN MODO OSCURO / CLARO -->
+      <button id="themeToggle" aria-label="Cambiar modo oscuro o claro" class="flex items-center gap-2 rounded-full pl-1.5 pr-3 py-1.5 border border-[var(--line)] bg-[var(--card)] hover:scale-[1.03] transition shadow-sm">
+        <span id="themeIcon" class="w-8 h-8 rounded-full accent flex items-center justify-center text-base leading-none">☀️</span>
+        <span id="themeLabel" class="text-xs font-bold tracking-wide">MODO CLARO</span>
+      </button>
+      <a href="#calendario" class="hidden md:inline-flex btn-accent font-bold text-sm px-5 py-2.5 rounded-full">Empezar hoy →</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="pt-[100px] sm:pt-[120px] pb-8 px-4 sm:px-6 max-w-7xl mx-auto">
+  <div class="grid lg:grid-cols-12 gap-6">
+    <div class="lg:col-span-7 reveal visible">
+      <div class="inline-flex items-center gap-2 card rounded-full px-3 py-1.5 text-[11px] font-bold tracking-widest">
+        <span class="accent px-2 py-0.5 rounded-full text-[10px]">NUEVO</span> 21 ENTRENAMIENTOS • 15 MIN • EN CASA • SIN APARATOS
+      </div>
+      <h1 class="font-display font-black leading-[0.95] tracking-tight text-[42px] sm:text-[64px] lg:text-[76px] mt-5">
+        Abdomen más firme<br>en <span class="accent-text">21 días.</span><br>
+        <span class="muted font-extrabold">En el piso de<br>tu sala.</span>
+      </h1>
+      <p class="muted text-base sm:text-lg leading-relaxed mt-5 max-w-xl">El protocolo te muestra <b class="text-[var(--text)]">qué entrenar hoy</b>, aumenta la dificultad poco a poco y te quita la duda de qué ejercicio hacer. Solo 15 minutos al día.</p>
+
+      <div class="flex flex-wrap gap-3 mt-7">
+        <button onclick="startToday()" class="btn-accent font-extrabold px-7 py-4 rounded-full text-sm sm:text-base flex items-center gap-2">▶ &nbsp;Entrenar el día de hoy</button>
+        <a href="#calendario" class="card font-bold px-7 py-4 rounded-full text-sm sm:text-base hover:border-[var(--accent)] transition">Ver calendario 21 días</a>
+      </div>
+
+      <div class="grid grid-cols-3 gap-3 mt-8 max-w-xl">
+        <div class="card rounded-2xl p-4"><p class="font-display font-black text-2xl sm:text-3xl">21</p><p class="muted text-xs font-semibold mt-1">Entrenamientos guiados</p></div>
+        <div class="card rounded-2xl p-4"><p class="font-display font-black text-2xl sm:text-3xl">15<span class="text-base">min</span></p><p class="muted text-xs font-semibold mt-1">Por día, sin gimnasio</p></div>
+        <div class="card rounded-2xl p-4"><p class="font-display font-black text-2xl sm:text-3xl">3</p><p class="muted text-xs font-semibold mt-1">Fases progresivas</p></div>
+      </div>
+
+      <div class="flex items-center gap-3 mt-6">
+        <div class="flex -space-x-2">
+          <img class="w-9 h-9 rounded-full border-2 border-[var(--bg)] object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop">
+          <img class="w-9 h-9 rounded-full border-2 border-[var(--bg)] object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop">
+          <img class="w-9 h-9 rounded-full border-2 border-[var(--bg)] object-cover" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop">
+          <span class="w-9 h-9 rounded-full accent flex items-center justify-center text-[10px] font-black border-2 border-[var(--bg)]">+2k</span>
+        </div>
+        <p class="text-xs muted leading-tight"><b class="text-[var(--text)]">+2,400 personas</b> ya marcan<br>su día cumplido cada mañana</p>
+        <span class="ml-auto hidden sm:block text-amber-400 text-sm tracking-widest">★★★★★ <span class="muted text-xs tracking-normal font-semibold">4.9/5</span></span>
+      </div>
+    </div>
+
+    <!-- HERO CARD -->
+    <div class="lg:col-span-5 reveal visible">
+      <div class="relative rounded-[28px] overflow-hidden card shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&h=1100&fit=crop" class="w-full h-[420px] sm:h-[520px] object-cover" alt="Entrenamiento en casa">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+        <div class="absolute top-4 left-4 right-4 flex justify-between items-start">
+          <span class="bg-white/15 backdrop-blur text-white text-[11px] font-bold px-3 py-1.5 rounded-full border border-white/20">🔥 HOY • <span id="heroDayLabel">DÍA 1</span></span>
+          <span class="accent text-xs font-black px-3 py-1.5 rounded-full">15 MIN</span>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-6 text-white">
+          <p class="text-[11px] tracking-[0.2em] font-bold text-white/70">ENTRENAMIENTO DE HOY</p>
+          <h3 id="heroWorkoutTitle" class="font-display font-black text-2xl sm:text-3xl leading-tight mt-1">Activación Core</h3>
+          <p id="heroWorkoutDesc" class="text-white/80 text-sm mt-1">Despierta tu abdomen y aprende la técnica base.</p>
+          <div class="flex gap-2 mt-4">
+            <span id="heroLevel" class="bg-white text-black text-xs font-bold px-3 py-1.5 rounded-full">Principiante</span>
+            <span class="bg-white/20 backdrop-blur text-xs font-bold px-3 py-1.5 rounded-full border border-white/20">6 ejercicios</span>
+            <span class="bg-white/20 backdrop-blur text-xs font-bold px-3 py-1.5 rounded-full border border-white/20">Sin aparatos</span>
+          </div>
+          <button onclick="startToday()" class="w-full mt-5 bg-white text-black font-black py-3.5 rounded-full hover:scale-[1.02] transition">Comenzar entrenamiento →</button>
+        </div>
+      </div>
+      <div class="card rounded-2xl p-4 mt-4 flex items-center gap-4 float">
+        <div class="w-12 h-12 rounded-2xl accent flex items-center justify-center text-xl font-black">✓</div>
+        <div class="flex-1"><p class="font-bold text-sm">¿No sabes qué ejercicio hacer?</p><p class="muted text-xs">Nosotros te lo decimos. Tú solo marca cada día.</p></div>
+        <span class="accent-text font-black text-sm">Listo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="mt-10 overflow-hidden rounded-full border border-[var(--line)] bg-[var(--card)] py-3">
+    <div class="marquee flex whitespace-nowrap gap-8 font-display font-extrabold text-sm tracking-wide">
+      <span>ABDOMEN DEFINIDO ✦ 15 MINUTOS ✦ EN CASA ✦ SIN APARATOS ✦ 21 DÍAS ✦ PROGRESIÓN GUIADA ✦ CALENDARIO ✦&nbsp;</span>
+      <span>ABDOMEN DEFINIDO ✦ 15 MINUTOS ✦ EN CASA ✦ SIN APARATOS ✦ 21 DÍAS ✦ PROGRESIÓN GUIADA ✦ CALENDARIO ✦&nbsp;</span>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 mt-4 reveal">
+  <div class="grid md:grid-cols-12 gap-4">
+    <!-- Progress ring -->
+    <div class="md:col-span-4 card rounded-[24px] p-6 flex items-center gap-5">
+      <div class="relative w-[110px] h-[110px] shrink-0">
+        <svg class="w-full h-full timer-ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="var(--line)" stroke-width="9"/><circle id="progressRing" cx="50" cy="50" r="42" fill="none" stroke="var(--accent)" stroke-width="9" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"/></svg>
+        <div class="absolute inset-0 flex flex-col items-center justify-center"><span id="progressPct" class="font-display font-black text-2xl">0%</span><span class="text-[10px] muted font-bold tracking-widest">COMPLETADO</span></div>
+      </div>
+      <div>
+        <p class="text-xs muted font-bold tracking-widest">TU PROGRESO</p>
+        <p class="font-display font-black text-xl leading-tight mt-1"><span id="statDone">0</span> de 21 días<br>completados</p>
+        <p id="motivText" class="muted text-xs mt-2 leading-relaxed">Hoy es el mejor día para empezar. Día 1 te espera.</p>
+        <div class="flex gap-2 mt-3"><button onclick="resetProgress()" class="text-[11px] font-bold card2 px-3 py-1.5 rounded-full hover:opacity-80">Reiniciar</button><button onclick="shareProgress()" class="text-[11px] font-bold accent px-3 py-1.5 rounded-full">Compartir ↗</button></div>
+      </div>
+    </div>
+    <!-- Stats -->
+    <div class="md:col-span-5 grid grid-cols-3 gap-4">
+      <div class="card rounded-[24px] p-5"><p class="text-2xl">🔥</p><p class="font-display font-black text-3xl mt-2" id="statStreak">0</p><p class="muted text-xs font-semibold">Racha de días</p><p class="text-[11px] muted mt-2">Constancia > intensidad</p></div>
+      <div class="card rounded-[24px] p-5"><p class="text-2xl">⏱️</p><p class="font-display font-black text-3xl mt-2"><span id="statMinutes">0</span><span class="text-base">min</span></p><p class="muted text-xs font-semibold">Entrenados</p><p class="text-[11px] muted mt-2">15 min por sesión</p></div>
+      <div class="card rounded-[24px] p-5"><p class="text-2xl">🏆</p><p class="font-display font-black text-3xl mt-2" id="statPhase">Fase 1</p><p class="muted text-xs font-semibold">Fase actual</p><p class="text-[11px] muted mt-2" id="statPhaseDesc">Fundamentos</p></div>
+      <div class="col-span-3 card rounded-[24px] p-5">
+        <div class="flex justify-between items-center"><p class="font-bold text-sm">Progreso por fase</p><span class="text-xs muted font-semibold">3 semanas</span></div>
+        <div class="grid grid-cols-3 gap-3 mt-4" id="phaseBars"></div>
+      </div>
+    </div>
+    <!-- Quote / Tip -->
+    <div class="md:col-span-3 rounded-[24px] p-6 accent relative overflow-hidden">
+      <p class="text-[11px] font-black tracking-[0.2em] opacity-70">FRASE DEL DÍA</p>
+      <p id="dailyQuote" class="font-display font-extrabold text-lg leading-snug mt-3">“No necesitas una hora. Necesitas 15 minutos hoy.”</p>
+      <p class="text-xs font-semibold opacity-80 mt-3">— Tu coach de 21 días</p>
+      <button onclick="newQuote()" class="mt-5 bg-black/90 text-white text-xs font-bold px-4 py-2 rounded-full">Otra frase ↻</button>
+      <span class="absolute -right-4 -bottom-6 text-[110px] font-black opacity-10 leading-none">21</span>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDARIO -->
+<section id="calendario" class="max-w-7xl mx-auto px-4 sm:px-6 mt-14 reveal">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="accent-text text-xs font-black tracking-[0.25em]">CALENDARIO DE SEGUIMIENTO</p>
+      <h2 class="font-display font-black text-3xl sm:text-5xl tracking-tight mt-2">Marca cada día.<br><span class="muted">Ve tu evolución.</span></h2>
+    </div>
+    <div class="flex gap-2 flex-wrap" id="phaseTabs">
+      <button data-phase="all" class="phase-tab active card px-4 py-2 rounded-full text-xs font-bold">Todos</button>
+      <button data-phase="1" class="phase-tab card px-4 py-2 rounded-full text-xs font-bold">Fase 1 • Fundamentos</button>
+      <button data-phase="2" class="phase-tab card px-4 py-2 rounded-full text-xs font-bold">Fase 2 • Fuerza</button>
+      <button data-phase="3" class="phase-tab card px-4 py-2 rounded-full text-xs font-bold">Fase 3 • Definición</button>
+    </div>
+  </div>
+  <div id="calendarGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-3 mt-7"></div>
+  <p class="muted text-xs mt-4 text-center">💡 Toca cualquier día para ver su entrenamiento. Toca el ✓ para marcarlo como completado sin entrenar (si ya lo hiciste).</p>
+</section>
+
+<!-- PLAYER -->
+<section id="entrenamiento" class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 reveal">
+  <div class="card rounded-[28px] overflow-hidden shadow-2xl">
+    <div class="grid lg:grid-cols-12">
+      <!-- Left: Player -->
+      <div class="lg:col-span-7 p-6 sm:p-8">
+        <div class="flex flex-wrap items-center gap-2">
+          <span id="playerDayBadge" class="accent text-xs font-black px-3 py-1.5 rounded-full">DÍA 1</span>
+          <span id="playerPhaseBadge" class="card2 text-xs font-bold px-3 py-1.5 rounded-full">Fase 1 • Fundamentos</span>
+          <span id="playerLevelBadge" class="card2 text-xs font-bold px-3 py-1.5 rounded-full">Principiante</span>
+          <span id="playerDoneBadge" class="hidden bg-emerald-500 text-white text-xs font-black px-3 py-1.5 rounded-full">✓ COMPLETADO</span>
+        </div>
+        <h2 id="playerTitle" class="font-display font-black text-3xl sm:text-4xl tracking-tight mt-4">Activación Core</h2>
+        <p id="playerDesc" class="muted mt-2 leading-relaxed">Despierta tu abdomen y aprende la técnica base.</p>
+
+        <!-- Timer -->
+        <div class="flex flex-col sm:flex-row items-center gap-6 mt-7">
+          <div class="relative w-[170px] h-[170px] shrink-0">
+            <svg class="w-full h-full timer-ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="var(--line)" stroke-width="7"/><circle id="timerRing" cx="50" cy="50" r="44" fill="none" stroke="var(--accent)" stroke-width="7" stroke-linecap="round" stroke-dasharray="276" stroke-dashoffset="0"/></svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+              <span id="timerText" class="font-display font-black text-4xl">15:00</span>
+              <span id="timerMode" class="text-[10px] font-black tracking-[0.2em] muted mt-1">LISTO PARA EMPEZAR</span>
+              <span id="timerSub" class="text-[11px] muted mt-1">6 ejercicios • 2 rondas</span>
+            </div>
+          </div>
+          <div class="flex-1 w-full">
+            <div class="card2 rounded-2xl overflow-hidden">
+              <!-- IMAGEN DE EJEMPLO DEL EJERCICIO -->
+              <div class="relative group cursor-zoom-in" onclick="openImageModal()">
+                <img id="exImage" src="https://images.pexels.com/photos/8173429/pexels-photo-8173429.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Ejemplo visual del ejercicio" class="w-full h-[220px] sm:h-[260px] object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10"></div>
+                <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] font-black tracking-widest px-3 py-1.5 rounded-full border border-white/20">📸 EJEMPLO VISUAL</span>
+                <span class="absolute top-3 right-3 bg-white text-black text-[10px] font-black px-2.5 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition">🔍 Ampliar</span>
+                <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-3">
+                  <div><p class="text-[10px] font-black tracking-widest text-white/70">EJERCICIO <span id="exCounter">1 / 6</span></p><h3 id="exName" class="font-display font-extrabold text-xl text-white leading-tight">Plancha Abdominal</h3></div>
+                  <span id="exTimeBadge" class="accent font-black text-sm px-3 py-1.5 rounded-full whitespace-nowrap shrink-0">45s</span>
+                </div>
+              </div>
+              <div class="p-5 pt-4">
+              <p class="text-[11px] font-black tracking-widest muted">CÓMO SE HACE</p>
+              <p id="exDesc" class="muted text-sm leading-relaxed mt-1.5">Apoya antebrazos...</p>
+              <div class="flex gap-2 mt-4">
+                <span class="text-[11px] font-bold card px-2.5 py-1 rounded-full" id="exReps">30 seg</span>
+                <span class="text-[11px] font-bold card px-2.5 py-1 rounded-full">Descanso 15s</span>
+                <span class="text-[11px] font-bold card px-2.5 py-1 rounded-full" id="exRound">Ronda 1/2</span>
+              </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <button id="playBtn" onclick="togglePlay()" class="btn-accent flex-1 min-w-[140px] font-black py-3.5 rounded-full">▶ Iniciar entrenamiento</button>
+              <button onclick="skipExercise()" class="card font-bold px-5 py-3.5 rounded-full">Siguiente →</button>
+              <button onclick="restartWorkout()" class="card font-bold px-5 py-3.5 rounded-full">↻ Reiniciar</button>
+            </div>
+            <div class="flex gap-1.5 mt-4" id="exDots"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Exercises list -->
+      <div class="lg:col-span-5 bg-[var(--card2)] border-t lg:border-t-0 lg:border-l border-[var(--line)] p-6 sm:p-8">
+        <div class="flex items-center justify-between"><h3 class="font-display font-extrabold">Rutina de hoy</h3><span class="text-xs muted font-bold">15 min totales</span></div>
+        <div id="exerciseList" class="mt-4 space-y-2.5 max-h-[420px] overflow-y-auto pr-1"></div>
+        <div class="card rounded-2xl p-4 mt-5">
+          <p class="font-bold text-sm">💡 Tip del coach</p><p id="coachTip" class="muted text-xs leading-relaxed mt-1">Respira...</p>
+        </div>
+        <button id="completeBtn" onclick="completeWorkout()" class="w-full mt-4 bg-emerald-500 hover:bg-emerald-600 text-white font-black py-4 rounded-full transition">✓ Marcar día como completado</button>
+        <p class="muted text-[11px] text-center mt-2">Al completar, se guarda en tu calendario automáticamente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FASES -->
+<section id="fases" class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 reveal">
+  <p class="accent-text text-xs font-black tracking-[0.25em] text-center">PROGRESIÓN INTELIGENTE</p>
+  <h2 class="font-display font-black text-3xl sm:text-5xl text-center tracking-tight mt-2">3 fases. <span class="muted">21 días.</span> Cero improvisación.</h2>
+  <div class="grid md:grid-cols-3 gap-4 mt-8">
+    <div class="card rounded-[24px] p-6 hover:border-[var(--accent)] transition">
+      <span class="accent text-xs font-black px-3 py-1 rounded-full">SEMANA 1 • DÍAS 1-7</span>
+      <h3 class="font-display font-black text-2xl mt-4">Fundamentos</h3><p class="muted text-sm leading-relaxed mt-2">Aprende la técnica, activa el core profundo y crea el hábito. Ritmo suave, forma perfecta.</p>
+      <ul class="text-sm mt-4 space-y-2 muted"><li>✓ Planchas y crunches básicos</li><li>✓ 30-40 seg por ejercicio</li><li>✓ Enfoque en respiración</li></ul>
+      <div class="mt-5 h-2 rounded-full bg-[var(--card2)] overflow-hidden"><div class="h-full accent rounded-full" style="width:33%"></div></div><p class="text-xs muted mt-2 font-semibold">Dificultad: ★☆☆☆☆</p>
+    </div>
+    <div class="card rounded-[24px] p-6 hover:border-[var(--accent)] transition relative overflow-hidden">
+      <span class="absolute top-4 right-4 accent2 text-[10px] font-black px-2 py-1 rounded-full">MÁS INTENSO</span>
+      <span class="card2 text-xs font-black px-3 py-1 rounded-full">SEMANA 2 • DÍAS 8-14</span>
+      <h3 class="font-display font-black text-2xl mt-4">Fuerza Core</h3><p class="muted text-sm leading-relaxed mt-2">Sube repeticiones, agrega giros, elevaciones y trabajo oblicuo. Tu abdomen empieza a responder.</p>
+      <ul class="text-sm mt-4 space-y-2 muted"><li>✓ Russian twist y leg raises</li><li>✓ 45 seg por ejercicio</li><li>✓ Circuitos de 2 rondas</li></ul>
+      <div class="mt-5 h-2 rounded-full bg-[var(--card2)] overflow-hidden"><div class="h-full accent rounded-full" style="width:66%"></div></div><p class="text-xs muted mt-2 font-semibold">Dificultad: ★★★☆☆</p>
+    </div>
+    <div class="card rounded-[24px] p-6 hover:border-[var(--accent)] transition">
+      <span class="bg-[var(--accent2)] text-white text-xs font-black px-3 py-1 rounded-full">SEMANA 3 • DÍAS 15-21</span>
+      <h3 class="font-display font-black text-2xl mt-4">Definición</h3><p class="muted text-sm leading-relaxed mt-2">HIIT de core, mountain climbers y trabajo explosivo. 15 minutos que se sienten en todo el cuerpo.</p>
+      <ul class="text-sm mt-4 space-y-2 muted"><li>✓ HIIT y trabajo dinámico</li><li>✓ 50 seg + descansos cortos</li><li>✓ Máxima quema en 15 min</li></ul>
+      <div class="mt-5 h-2 rounded-full bg-[var(--card2)] overflow-hidden"><div class="h-full bg-[var(--accent2)] rounded-full" style="width:100%"></div></div><p class="text-xs muted mt-2 font-semibold">Dificultad: ★★★★★</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS / DOLORES -->
+<section id="beneficios" class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 reveal">
+  <div class="grid lg:grid-cols-2 gap-4">
+    <div class="card rounded-[24px] p-7">
+      <p class="accent2 text-xs font-black tracking-widest">¿TE PASA ESTO?</p>
+      <h3 class="font-display font-black text-2xl mt-2">Ya no escondas tu barriga en las fotos.</h3>
+      <div class="space-y-3 mt-5">
+        <div class="card2 rounded-2xl p-4 flex gap-3"><span>😣</span><p class="text-sm muted"><b class="text-[var(--text)]">Mete la barriga en cada foto</b> y se molesta por seguir escondiendo su cuerpo.</p></div>
+        <div class="card2 rounded-2xl p-4 flex gap-3"><span>📅</span><p class="text-sm muted"><b class="text-[var(--text)]">Empieza el lunes y abandona</b> antes de que termine la semana porque la rutina lo agota.</p></div>
+        <div class="card2 rounded-2xl p-4 flex gap-3"><span>🏋️</span><p class="text-sm muted"><b class="text-[var(--text)]">Cree que solo cambiará</b> si paga gimnasio, compra aparatos o entrena una hora.</p></div>
+        <div class="card2 rounded-2xl p-4 flex gap-3"><span>🔍</span><p class="text-sm muted"><b class="text-[var(--text)]">Busca demasiados ejercicios,</b> arma muy poca rutina y termina sin constancia.</p></div>
+      </div>
+    </div>
+    <div class="rounded-[24px] p-7 accent relative overflow-hidden">
+      <p class="text-xs font-black tracking-widest opacity-70">LA SOLUCIÓN EN 15 MINUTOS</p>
+      <h3 class="font-display font-black text-2xl mt-2 leading-tight">21 entrenamientos guiados, calendario y progresión lista. Sin aparatos.</h3>
+      <div class="grid grid-cols-2 gap-3 mt-6">
+        <div class="bg-black/10 rounded-2xl p-4"><p class="font-black text-xl">✓ Guiado</p><p class="text-xs font-semibold opacity-80 mt-1">Te dice qué hacer hoy</p></div>
+        <div class="bg-black/10 rounded-2xl p-4"><p class="font-black text-xl">✓ 15 min</p><p class="text-xs font-semibold opacity-80 mt-1">En el piso de tu sala</p></div>
+        <div class="bg-black/10 rounded-2xl p-4"><p class="font-black text-xl">✓ Progresivo</p><p class="text-xs font-semibold opacity-80 mt-1">Dificultad que sube sola</p></div>
+        <div class="bg-black/10 rounded-2xl p-4"><p class="font-black text-xl">✓ Calendario</p><p class="text-xs font-semibold opacity-80 mt-1">Marca y ve tu evolución</p></div>
+      </div>
+      <button onclick="startToday()" class="mt-6 bg-black text-white font-black px-6 py-3.5 rounded-full w-full hover:scale-[1.02] transition">Quiero mi abdomen firme →</button>
+      <p class="text-[11px] font-semibold opacity-70 text-center mt-3">Para quien evita ropa ajustada, tiene poco tiempo y ya intentó por su cuenta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 mb-10 reveal">
+  <div class="card rounded-[28px] p-8 sm:p-12 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.06] pointer-events-none" style="background:radial-gradient(circle at 50% 0%, var(--accent), transparent 60%)"></div>
+    <img src="https://i.postimg.cc/JnQXh5bM/impulsodigitaljr-b-icon-180x180.png" class="w-16 h-16 rounded-2xl mx-auto object-cover shadow-xl relative" alt="Impulso Digital JR">
+    <h2 class="font-display font-black text-3xl sm:text-5xl tracking-tight mt-5 relative">Tu día 1 empieza<br><span class="accent-text">en 15 minutos.</span></h2>
+    <p class="muted max-w-md mx-auto mt-3 relative">No busques más ejercicios. Sigue el protocolo, marca cada día y deja que la progresión haga el trabajo.</p>
+    <div class="flex flex-wrap justify-center gap-3 mt-7 relative">
+      <button onclick="startToday()" class="btn-accent font-black px-8 py-4 rounded-full">▶ Entrenar ahora</button>
+      <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="card font-bold px-8 py-4 rounded-full">Volver arriba ↑</button>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-[var(--line)] py-8 px-4 text-center">
+  <img src="https://i.postimg.cc/JnQXh5bM/impulsodigitaljr-b-icon-180x180.png" class="w-9 h-9 rounded-lg mx-auto object-cover mb-3" alt="Impulso Digital JR">
+  <p class="text-sm muted">© 2026 Impulso Digital JR. Todos los derechos reservados.</p>
+  <p class="text-[11px] muted mt-1">Protocolo 21 Días Abdomen Definido • Entrenamientos de 15 min en casa</p>
+</footer>
+
+<!-- MODAL IMAGEN AMPLIADA -->
+<div id="imageModal" class="fixed inset-0 z-[1001] hidden items-center justify-center p-4 bg-black/85 backdrop-blur-sm" onclick="closeImageModal()">
+  <div class="max-w-2xl w-full" onclick="event.stopPropagation()">
+    <img id="modalImage" src="" alt="Ejemplo visual del ejercicio" class="w-full max-h-[70vh] object-cover rounded-[24px] shadow-2xl">
+    <div class="flex items-center justify-between gap-3 mt-4">
+      <div><p id="modalTitle" class="font-display font-extrabold text-white text-lg"></p><p id="modalDesc" class="text-white/70 text-sm"></p></div>
+      <button onclick="closeImageModal()" class="bg-white text-black font-black px-5 py-2.5 rounded-full shrink-0">Cerrar ✕</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-[999] hidden"><div class="bg-black text-white dark:bg-white dark:text-black px-5 py-3 rounded-full font-bold text-sm shadow-2xl flex items-center gap-2" style="background:var(--text);color:var(--bg)"><span id="toastMsg">¡Listo!</span></div></div>
+
+<!-- CELEBRATION MODAL -->
+<div id="celebrateModal" class="fixed inset-0 z-[1000] hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+  <div class="card rounded-[28px] max-w-sm w-full p-8 text-center shadow-2xl">
+    <div class="w-20 h-20 rounded-full accent flex items-center justify-center text-4xl mx-auto pulse">🏆</div>
+    <h3 class="font-display font-black text-2xl mt-5">¡Día completado!</h3>
+    <p id="celebrateText" class="muted text-sm mt-2">Increíble. Ya llevas 1 de 21 días. La constancia es tu superpoder.</p>
+    <div class="grid grid-cols-2 gap-3 mt-6"><button onclick="closeCelebrate()" class="card font-bold py-3 rounded-full">Seguir</button><button onclick="closeCelebrate();document.getElementById('calendario').scrollIntoView({behavior:'smooth'})" class="btn-accent font-black py-3 rounded-full">Ver calendario</button></div>
+  </div>
+</div>
+
+<script>
+// ===== DATA: 21 ENTRENAMIENTOS =====
+const EX = {
+  plancha:{n:"Plancha Abdominal",d:"Apoya antebrazos en el piso, cuerpo en línea recta de cabeza a talones. Aprieta abdomen y glúteos, respira lento.",img:"https://images.pexels.com/photos/8173429/pexels-photo-8173429.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  crunch:{n:"Crunch Abdominal",d:"Acostado boca arriba, rodillas flexionadas. Eleva hombros y cabeza con la fuerza del abdomen, sin tirar del cuello.",img:"https://images.pexels.com/photos/8038636/pexels-photo-8038636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  puente:{n:"Puente de Glúteos",d:"Acostado, pies apoyados. Eleva cadera apretando glúteos y abdomen. Baja controlado.",img:"https://images.pexels.com/photos/4587402/pexels-photo-4587402.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  superman:{n:"Superman",d:"Boca abajo, eleva brazos y piernas a la vez. Fortalece espalda baja y core posterior.",img:"https://images.pexels.com/photos/4379313/pexels-photo-4379313.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  deadbug:{n:"Dead Bug",d:"Boca arriba, brazos al techo y rodillas a 90°. Extiende brazo y pierna opuesta sin despegar la espalda baja.",img:"https://images.pexels.com/photos/6443475/pexels-photo-6443475.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  bicho:{n:"Bicicleta Abdominal",d:"Acostado, lleva codo derecho a rodilla izquierda y viceversa, en movimiento continuo.",img:"https://images.pexels.com/photos/7721988/pexels-photo-7721988.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  twist:{n:"Russian Twist",d:"Sentado, rodillas flexionadas, torso inclinado. Gira el torso de lado a lado con control.",img:"https://images.pexels.com/photos/5128466/pexels-photo-5128466.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  legraise:{n:"Elevación de Piernas",d:"Acostado boca arriba, eleva piernas rectas a 90° y baja sin tocar el piso. Control total.",img:"https://images.pexels.com/photos/4803717/pexels-photo-4803717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  mountain:{n:"Mountain Climbers",d:"En plancha alta, lleva rodillas al pecho alternando rápido. Core y cardio a la vez.",img:"https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  plankSide:{n:"Plancha Lateral",d:"De lado sobre un antebrazo, cadera elevada. Cambia de lado en la mitad del tiempo.",img:"https://images.pexels.com/photos/9645062/pexels-photo-9645062.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  hollow:{n:"Hollow Hold",d:"Boca arriba, eleva hombros y piernas, brazos extendidos. Forma de banana, abdomen firme.",img:"https://images.pexels.com/photos/6516225/pexels-photo-6516225.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  situp:{n:"Sit-Ups Completos",d:"Acostado, siéntate completo llevando manos hacia los pies. Movimiento completo de core.",img:"https://images.pexels.com/photos/8038640/pexels-photo-8038640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  toeTouch:{n:"Toque de Puntas",d:"Acostado, eleva piernas a 90° y toca las puntas con las manos alternando.",img:"https://images.pexels.com/photos/6516221/pexels-photo-6516221.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  plankJack:{n:"Plank Jacks",d:"En plancha alta, abre y cierra piernas saltando. Mantén cadera estable.",img:"https://images.pexels.com/photos/7801525/pexels-photo-7801525.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  burpeeCore:{n:"Burpee + Crunch",d:"Burpee completo y al levantarte haz un crunch de pie. Explosivo y de core.",img:"https://images.pexels.com/photos/30246184/pexels-photo-30246184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  vup:{n:"V-Ups",d:"Acostado, eleva piernas y torso a la vez tocando puntas. Forma de V, máxima contracción.",img:"https://images.pexels.com/photos/3930995/pexels-photo-3930995.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  plankReach:{n:"Plancha con Alcance",d:"En plancha, alcanza adelante con un brazo alternando. Anti-rotación de core.",img:"https://images.pexels.com/photos/8769165/pexels-photo-8769165.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  scissor:{n:"Tijeras Abdominales",d:"Acostado, piernas elevadas, cruza una sobre otra como tijeras sin bajarlas.",img:"https://images.pexels.com/photos/4803714/pexels-photo-4803714.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  flutter:{n:"Flutter Kicks",d:"Boca arriba, piernas elevadas, patadas pequeñas alternadas manteniendo abdomen apretado.",img:"https://images.pexels.com/photos/8038625/pexels-photo-8038625.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  crunchRev:{n:"Crunch Inverso",d:"Acostado, eleva cadera llevando rodillas al pecho. Trabaja abdomen bajo.",img:"https://images.pexels.com/photos/6516222/pexels-photo-6516222.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+  plankHip:{n:"Plancha con Toque de Cadera",d:"En plancha, toca cadera alternando sin mover el torso. Estabilidad total.",img:"https://images.pexels.com/photos/2294363/pexels-photo-2294363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+};
+function w(day,title,desc,level,phase,keys,tip){return{day,title,desc,level,phase,tip,exercises:keys.map(k=>({...EX[k],key:k}))}}
+const WORKOUTS=[
+ w(1,"Activación Core","Despierta tu abdomen y aprende la técnica base. Ritmo suave, forma perfecta.","Principiante",1,["plancha","crunch","puente","superman","deadbug","plancha"],"Respira por la nariz. Si tiemblas, es normal: tu core está trabajando."),
+ w(2,"Core Fundamentos","Repetición de la base con un poco más de tiempo. La constancia crea el hábito.","Principiante",1,["crunch","plancha","bicho","puente","deadbug","plankSide"],"Aprieta el abdomen como si fueras a recibir un golpe."),
+ w(3,"Abdomen Bajo","Enfócate en la parte baja del abdomen, la más difícil de activar.","Principiante",1,["legraise","crunchRev","puente","plancha","deadbug","flutter"],"No despeges la espalda baja del piso en las elevaciones."),
+ w(4,"Oblicuos Suaves","Trabaja los laterales para una cintura más definida.","Principiante",1,["plankSide","bicho","twist","plancha","crunch","superman"],"Gira desde el torso, no solo con los brazos."),
+ w(5,"Estabilidad Total","Core estable y postura. Aguanta, respira y controla.","Principiante",1,["plancha","hollow","deadbug","plankReach","puente","crunch"],"Imagina que tiras de un hilo de cabeza a talones."),
+ w(6,"Fuerza Base","Ya conoces los movimientos. Ahora subimos el tiempo.","Intermedio",1,["crunch","legraise","twist","plancha","bicho","hollow"],"Calidad sobre velocidad. Cada repetición cuenta."),
+ w(7,"Semana 1 • Desafío","Cierre de la primera semana. Demuestra lo que aprendiste.","Intermedio",1,["plancha","vup","mountain","plankSide","crunch","deadbug"],"Semana 1 completada = hábito creado. Sigue."),
+ w(8,"Fuerza Core","Entramos a la fase de fuerza. Más repeticiones y giros.","Intermedio",2,["twist","legraise","bicho","plancha","crunch","plankHip"],"Fase 2: tu abdomen ya está listo para más."),
+ w(9,"Oblicuos de Acero","Laterales fuertes y cintura marcada.","Intermedio",2,["plankSide","twist","bicho","hollow","crunch","scissor"],"Mantén la cadera alta en la plancha lateral."),
+ w(10,"Abdomen Bajo Pro","Elevaciones y control total del abdomen inferior.","Intermedio",2,["legraise","crunchRev","flutter","plancha","vup","deadbug"],"Baja las piernas en 3 segundos. Control = fuerza."),
+ w(11,"Core Dinámico","Movimiento continuo que quema y fortalece.","Intermedio",2,["mountain","bicho","twist","plankJack","crunch","plancha"],"Sube el ritmo sin perder la postura."),
+ w(12,"Estabilidad Avanzada","Anti-rotación y equilibrio de core.","Intermedio",2,["plankReach","deadbug","hollow","plankHip","superman","plancha"],"Si te mueves, baja la velocidad. La forma manda."),
+ w(13,"Fuerza Total","Circuito completo de fuerza core. Dos rondas exigentes.","Intermedio",2,["vup","legraise","twist","mountain","plankSide","crunch"],"Ya llevas 13 días. Tu constancia se nota."),
+ w(14,"Semana 2 • Desafío","La mitad del protocolo. Hora de sentir el cambio.","Avanzado",2,["mountain","vup","plankJack","legraise","bicho","plancha"],"14 días = 2 semanas de hábito. ¡Mitad superada!"),
+ w(15,"Definición HIIT","Cardio + core. Quema mientras defines.","Avanzado",3,["mountain","burpeeCore","plankJack","bicho","crunch","plancha"],"Fase 3: intervalos cortos, esfuerzo máximo."),
+ w(16,"Abdomen Explosivo","Movimientos explosivos para quemar grasa abdominal.","Avanzado",3,["burpeeCore","vup","mountain","scissor","twist","hollow"],"Explota en la subida, controla en la bajada."),
+ w(17,"Core de Acero","Máxima tensión en cada ejercicio.","Avanzado",3,["hollow","plankReach","legraise","plankHip","crunchRev","plancha"],"Tensión constante = abdomen firme."),
+ w(18,"Oblicuos HIIT","Laterales a máxima velocidad.","Avanzado",3,["bicho","twist","plankSide","mountain","scissor","crunch"],"Velocidad con control. Sin pausa."),
+ w(19,"Definición Total","Todo el core en un solo circuito HIIT.","Avanzado",3,["mountain","vup","burpeeCore","plankJack","legraise","plancha"],"Solo faltan 3 días. Da todo hoy."),
+ w(20,"Último Empuje","El penúltimo día. Deja todo en el piso.","Avanzado",3,["vup","mountain","hollow","twist","plankSide","crunch"],"Mañana es tu día 21. Casi lo logras."),
+ w(21,"Abdomen Definido","El gran final. 15 minutos que coronan 21 días de constancia.","Final",3,["burpeeCore","mountain","vup","plankJack","legraise","plancha"],"¡Día 21! Eres otra persona. Celebralo."),
+];
+const QUOTES=["“No necesitas una hora. Necesitas 15 minutos hoy.”","“La constancia vence a la intensidad, siempre.”","“En 21 días vas a desear haber empezado hoy.”","“Tu abdomen no cambia en un día. Cambia en 21.”","“Marca el día. Eso es todo lo que tienes que hacer hoy.”","“Pequeño esfuerzo diario, resultado enorme.”","“No escondas tu barriga. Trabájala.”","“15 minutos en tu sala valen más que 0 en el gimnasio.”"];
+const PHASE_NAMES={1:"Fundamentos",2:"Fuerza Core",3:"Definición"};
+
+// ===== STATE =====
+let store=JSON.parse(localStorage.getItem('p21_store')||'{}');
+if(!store.completed)store.completed={};
+if(!store.startDate)store.startDate=new Date().toISOString().slice(0,10);
+function save(){localStorage.setItem('p21_store',JSON.stringify(store))}
+let currentDay=1, exIndex=0, round=1, mode='idle', timeLeft=45, totalTime=900, playing=false, timerInt=null, workSec=45, restSec=15;
+let filterPhase='all';
+
+// ===== THEME =====
+const html=document.documentElement;
+function applyTheme(t){html.dataset.theme=t;localStorage.setItem('p21_theme',t);document.getElementById('themeIcon').textContent=t==='dark'?'☀️':'🌙';document.getElementById('themeLabel').textContent=t==='dark'?'MODO CLARO':'MODO OSCURO';}
+applyTheme(localStorage.getItem('p21_theme')||'dark');
+document.getElementById('themeToggle').onclick=()=>{const next=html.dataset.theme==='dark'?'light':'dark';applyTheme(next);showToast(next==='dark'?'🌙 Modo oscuro activado':'☀️ Modo claro activado');};
+
+// ===== HELPERS =====
+function todayDayNum(){const start=new Date(store.startDate);const now=new Date();const diff=Math.floor((now-start)/86400000)+1;return Math.min(21,Math.max(1,diff))}
+function phaseOf(d){return d<=7?1:d<=14?2:3}
+function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+function showToast(msg){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=msg;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),2600)}
+function confetti(){const colors=['#C8FF2E','#FF5A1F','#fff','#FFD60A','#4ADE80'];for(let i=0;i<60;i++){const c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.background=colors[i%colors.length];c.style.transform=`rotate(${Math.random()*360}deg)`;document.body.appendChild(c);c.animate([{transform:'translateY(0) rotate(0deg)',opacity:1},{transform:`translateY(105vh) rotate(${Math.random()*720}deg)`,opacity:0}],{duration:1800+Math.random()*1200,easing:'cubic-bezier(.2,.8,.2,1)'}).onfinish=()=>c.remove();}}
+
+// ===== RENDER CALENDAR =====
+function renderCalendar(){
+  const grid=document.getElementById('calendarGrid');grid.innerHTML='';
+  WORKOUTS.filter(w=>filterPhase==='all'||w.phase==filterPhase).forEach(w=>{
+    const done=!!store.completed[w.day];const isToday=w.day===todayDayNum();const isActive=w.day===currentDay;
+    const el=document.createElement('div');
+    el.className=`day-card card rounded-[20px] p-4 ${done?'done':''} ${isActive?'active':''}`;
+    el.innerHTML=`
+      <div class="flex justify-between items-start"><span class="text-[10px] font-black tracking-widest muted">DÍA ${w.day}</span>
+      ${done?'<span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-black">✓</span>':isToday?'<span class="accent text-[9px] font-black px-2 py-0.5 rounded-full">HOY</span>':`<span class="text-[10px] font-bold muted">Fase ${w.phase}</span>`}</div>
+      <p class="font-display font-extrabold leading-tight mt-3 text-[15px]">${w.title}</p>
+      <p class="muted text-[11px] leading-snug mt-1 line-clamp-2">${w.desc}</p>
+      <div class="flex items-center justify-between mt-4"><span class="text-[11px] font-bold card2 px-2 py-1 rounded-full">⏱ 15 min</span><span class="text-[11px] font-bold ${done?'text-emerald-500':'accent-text'}">${done?'Completado':'Entrenar →'}</span></div>
+      <button onclick="event.stopPropagation();toggleDone(${w.day})" class="w-full mt-3 text-[11px] font-bold py-2 rounded-full ${done?'bg-emerald-500 text-white':'card2'}">${done?'✓ Completado — desmarcar':'Marcar como hecho ✓'}</button>`;
+    el.onclick=()=>loadWorkout(w.day,true);
+    grid.appendChild(el);
+  });
+}
+
+// ===== RENDER STATS =====
+function renderStats(){
+  const doneCount=Object.keys(store.completed).length;
+  const pct=Math.round(doneCount/21*100);
+  document.getElementById('progressRing').style.strokeDashoffset=264-(264*pct/100);
+  document.getElementById('progressPct').textContent=pct+'%';
+  document.getElementById('statDone').textContent=doneCount;
+  document.getElementById('navProgress').textContent=doneCount+'/21 días';
+  document.getElementById('statMinutes').textContent=doneCount*15;
+  // streak: consecutive from today backwards
+  let streak=0;const today=new Date();
+  for(let i=0;i<21;i++){const d=new Date(today);d.setDate(d.getDate()-i);const key=d.toISOString().slice(0,10);if(Object.values(store.completed).includes(key))streak++;else if(i===0)continue;else break;}
+  document.getElementById('statStreak').textContent=streak;
+  const cur=todayDayNum();const ph=phaseOf(cur);
+  document.getElementById('statPhase').textContent='Fase '+ph;
+  document.getElementById('statPhaseDesc').textContent=PHASE_NAMES[ph];
+  const msgs={0:"Hoy es el mejor día para empezar. Día 1 te espera.",7:"¡Una semana! El hábito ya se está formando.",14:"¡Dos semanas! Ya eres otra persona.",21:"¡Protocolo completado! Abdomen definido 🏆"};
+  document.getElementById('motivText').textContent=doneCount>=21?msgs[21]:doneCount>=14?msgs[14]:doneCount>=7?msgs[7]:msgs[0];
+  // phase bars
+  const bars=document.getElementById('phaseBars');bars.innerHTML='';
+  [1,2,3].forEach(p=>{const days=WORKOUTS.filter(w=>w.phase===p);const done=days.filter(w=>store.completed[w.day]).length;const pp=Math.round(done/7*100);
+    bars.innerHTML+=`<div><div class="flex justify-between text-[11px] font-bold"><span>Fase ${p}</span><span class="muted">${done}/7</span></div><div class="h-2.5 rounded-full bg-[var(--card2)] mt-1.5 overflow-hidden"><div class="h-full accent rounded-full transition-all" style="width:${pp}%"></div></div><p class="text-[10px] muted mt-1">${PHASE_NAMES[p]}</p></div>`;});
+  // hero
+  const hw=WORKOUTS[todayDayNum()-1];
+  document.getElementById('heroDayLabel').textContent='DÍA '+hw.day;
+  document.getElementById('heroWorkoutTitle').textContent=hw.title;
+  document.getElementById('heroWorkoutDesc').textContent=hw.desc;
+  document.getElementById('heroLevel').textContent=hw.level;
+}
+
+// ===== PLAYER =====
+function loadWorkout(day,scroll=false){
+  currentDay=day;exIndex=0;round=1;mode='idle';playing=false;clearInterval(timerInt);
+  workSec=WORKOUTS[day-1].phase===1?40:WORKOUTS[day-1].phase===2?45:50;timeLeft=workSec;totalTime=900;
+  const w=WORKOUTS[day-1];
+  document.getElementById('playerDayBadge').textContent='DÍA '+w.day;
+  document.getElementById('playerPhaseBadge').textContent=`Fase ${w.phase} • ${PHASE_NAMES[w.phase]}`;
+  document.getElementById('playerLevelBadge').textContent=w.level;
+  document.getElementById('playerTitle').textContent=w.title;
+  document.getElementById('playerDesc').textContent=w.desc;
+  document.getElementById('coachTip').textContent=w.tip;
+  document.getElementById('playerDoneBadge').classList.toggle('hidden',!store.completed[w.day]);
+  document.getElementById('completeBtn').textContent=store.completed[w.day]?'✓ Día completado — desmarcar':'✓ Marcar día como completado';
+  renderExerciseList();updateExerciseUI();updateTimerUI();
+  document.getElementById('playBtn').textContent='▶ Iniciar entrenamiento';
+  if(scroll)document.getElementById('entrenamiento').scrollIntoView({behavior:'smooth',block:'start'});
+  renderCalendar();
+}
+function renderExerciseList(){
+  const w=WORKOUTS[currentDay-1];const list=document.getElementById('exerciseList');list.innerHTML='';
+  w.exercises.forEach((ex,i)=>{
+    const active=i===exIndex;
+    list.innerHTML+=`<button onclick="jumpTo(${i})" class="w-full text-left flex items-center gap-3 p-2.5 rounded-2xl border transition ${active?'border-[var(--accent)] bg-[var(--card)]':'border-[var(--line)] bg-[var(--card)]/50 hover:border-[var(--accent)]'}">
+      <img src="${ex.img}" alt="${ex.n}" loading="lazy" class="thumb w-14 h-14 rounded-xl object-cover shrink-0 ${active?'ring-2 ring-[var(--accent)]':''}">
+      <span class="flex-1 min-w-0"><span class="font-bold text-sm block truncate">${i+1}. ${ex.n}</span><span class="muted text-[11px] block truncate">${ex.d}</span><span class="muted text-[11px]">${workSec} seg • Descanso 15s</span></span>
+      ${active?'<span class="accent-text text-xs font-black shrink-0">AHORA</span>':''}</button>`;
+  });
+  const dots=document.getElementById('exDots');dots.innerHTML='';
+  w.exercises.forEach((_,i)=>{dots.innerHTML+=`<span class="h-1.5 flex-1 rounded-full ${i<=exIndex?'accent':'bg-[var(--card2)]'}"></span>`});
+}
+function updateExerciseUI(){
+  const w=WORKOUTS[currentDay-1];const ex=w.exercises[exIndex];
+  const imgEl=document.getElementById('exImage');
+  imgEl.classList.add('fading');
+  setTimeout(()=>{imgEl.src=ex.img;imgEl.alt='Ejemplo visual: '+ex.n;imgEl.onload=()=>imgEl.classList.remove('fading');setTimeout(()=>imgEl.classList.remove('fading'),400);},180);
+  document.getElementById('exCounter').textContent=(exIndex+1)+' / '+w.exercises.length;
+  document.getElementById('exName').textContent=ex.n;
+  document.getElementById('exDesc').textContent=ex.d;
+  document.getElementById('exTimeBadge').textContent=workSec+'s';
+  document.getElementById('exReps').textContent=workSec+' seg de trabajo';
+  document.getElementById('exRound').textContent='Ronda '+round+'/2';
+  document.getElementById('timerSub').textContent=w.exercises.length+' ejercicios • 2 rondas';
+  renderExerciseList();
+}
+function updateTimerUI(){
+  document.getElementById('timerText').textContent=fmt(Math.max(0,timeLeft));
+  const total=mode==='rest'?restSec:workSec;
+  const pct=Math.max(0,timeLeft/total);
+  document.getElementById('timerRing').style.strokeDashoffset=276-(276*pct);
+  document.getElementById('timerMode').textContent=mode==='work'?'💪 TRABAJA':mode==='rest'?'😮‍💨 DESCANSA':mode==='done'?'🏆 ¡TERMINADO!':'LISTO PARA EMPEZAR';
+}
+function togglePlay(){
+  if(mode==='done'){restartWorkout();return}
+  playing=!playing;
+  document.getElementById('playBtn').textContent=playing?'⏸ Pausar':'▶ Continuar';
+  if(playing){if(mode==='idle')mode='work';timerInt=setInterval(tick,1000)}else clearInterval(timerInt);
+}
+function tick(){
+  timeLeft--;
+  if(timeLeft<=0){
+    if(mode==='work'){mode='rest';timeLeft=restSec;beep(600)}
+    else if(mode==='rest'){beep(900);nextExercise()}
+  }
+  updateTimerUI();
+}
+function nextExercise(){
+  if(exIndex<WORKOUTS[currentDay-1].exercises.length-1){exIndex++;mode='work';timeLeft=workSec}
+  else if(round<2){round++;exIndex=0;mode='work';timeLeft=workSec;showToast('🔁 Ronda '+round+' — ¡Vamos!')}
+  else{mode='done';playing=false;clearInterval(timerInt);document.getElementById('playBtn').textContent='↻ Entrenar de nuevo';completeWorkout(true);return}
+  updateExerciseUI();updateTimerUI();
+}
+function skipExercise(){nextExercise();if(!playing)togglePlay()}
+function jumpTo(i){exIndex=i;mode='work';timeLeft=workSec;updateExerciseUI();updateTimerUI()}
+function restartWorkout(){clearInterval(timerInt);playing=false;exIndex=0;round=1;mode='idle';timeLeft=workSec;document.getElementById('playBtn').textContent='▶ Iniciar entrenamiento';updateExerciseUI();updateTimerUI()}
+function beep(freq){try{const ctx=new (window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator();const g=ctx.createGain();o.frequency.value=freq;o.connect(g);g.connect(ctx.destination);g.gain.value=0.08;o.start();o.stop(ctx.currentTime+0.15)}catch(e){}}
+function completeWorkout(auto=false){
+  if(store.completed[currentDay]){delete store.completed[currentDay];save();showToast('Día '+currentDay+' desmarcado');loadWorkout(currentDay);renderStats();return}
+  store.completed[currentDay]=new Date().toISOString().slice(0,10);save();
+  loadWorkout(currentDay);renderStats();
+  if(auto||true){confetti();document.getElementById('celebrateText').textContent=`Increíble. Ya llevas ${Object.keys(store.completed).length} de 21 días. La constancia es tu superpoder.`;const m=document.getElementById('celebrateModal');m.classList.remove('hidden');m.classList.add('flex');}
+}
+function closeCelebrate(){const m=document.getElementById('celebrateModal');m.classList.add('hidden');m.classList.remove('flex')}
+function toggleDone(day){if(store.completed[day])delete store.completed[day];else store.completed[day]=new Date().toISOString().slice(0,10);save();renderStats();loadWorkout(day);showToast(store.completed[day]?'✓ Día '+day+' completado':'Día '+day+' desmarcado')}
+function startToday(){loadWorkout(todayDayNum(),true);setTimeout(()=>togglePlay(),600)}
+function resetProgress(){if(confirm('¿Seguro que quieres reiniciar todo tu progreso de 21 días?')){store.completed={};store.startDate=new Date().toISOString().slice(0,10);save();renderStats();loadWorkout(1);showToast('Progreso reiniciado. ¡Día 1 de nuevo!')}}
+function shareProgress(){const done=Object.keys(store.completed).length;const text=`💪 Llevo ${done}/21 días del Protocolo Abdomen Definido (15 min en casa). ¡Vamos!`;if(navigator.share)navigator.share({title:'Protocolo 21 Días',text});else{navigator.clipboard.writeText(text);showToast('📋 Copiado al portapapeles')}}
+function newQuote(){document.getElementById('dailyQuote').textContent=QUOTES[Math.floor(Math.random()*QUOTES.length)]}
+
+function openImageModal(){
+  const ex=WORKOUTS[currentDay-1].exercises[exIndex];
+  document.getElementById('modalImage').src=ex.img;
+  document.getElementById('modalTitle').textContent=ex.n;
+  document.getElementById('modalDesc').textContent=ex.d;
+  const m=document.getElementById('imageModal');m.classList.remove('hidden');m.classList.add('flex');
+}
+function closeImageModal(){const m=document.getElementById('imageModal');m.classList.add('hidden');m.classList.remove('flex')}
+
+// Phase tabs
+document.querySelectorAll('.phase-tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.phase-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');filterPhase=b.dataset.phase;renderCalendar()});
+
+// Reveal on scroll
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Init
+renderStats();loadWorkout(todayDayNum());newQuote();
+// Precargar imágenes de ejercicios para cambio instantáneo
+Object.values(EX).forEach(e=>{const i=new Image();i.src=e.img});
+</script>
+</body>
+</html>
